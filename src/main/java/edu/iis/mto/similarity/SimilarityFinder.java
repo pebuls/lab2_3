@@ -3,13 +3,13 @@ package edu.iis.mto.similarity;
 import edu.iis.mto.search.SequenceSearcher;
 
 public class SimilarityFinder {
-	private SequenceSearcher searcher;
+	private static SequenceSearcher searcher;
 
 	public SimilarityFinder(SequenceSearcher searcher) {
-		this.searcher = searcher;
+		SimilarityFinder.searcher = searcher;
 	}
 
-	public double calculateJackardSimilarity(int[] seq1, int[] seq2) {
+	public static double calculateJackardSimilarity(int[] seq1, int[] seq2) {
 		if (seq1.length == 0 && seq2.length == 0) {
 			return 1.0d;
 		}
@@ -20,7 +20,7 @@ public class SimilarityFinder {
 		return (double) intersectSize / (double) unionSize;
 	}
 
-	private int calculateIntersect(int[] seq1, int[] seq2) {
+	private static int calculateIntersect(int[] seq1, int[] seq2) {
 		int intersectSize = 0;
 		for (int elem : seq1) {
 			if (searcher.search(elem, seq2).isFound()) {
