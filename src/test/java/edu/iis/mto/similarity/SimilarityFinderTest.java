@@ -68,8 +68,8 @@ public class SimilarityFinderTest {
 
     @Test
     public void testCalculateJackardSimilarity_PartiallySame() throws Exception {
-        int[] ints1 = new int[]{1, 5, -3, 12, 69};
-        int[] ints2 = new int[]{0, 1 ,9, 7, 13};
+        int[] ints1 = new int[]{1, 5, 10};
+        int[] ints2 = new int[]{0, 1, 8};
 
         double actual = finder.calculateJackardSimilarity(ints1, ints2);
 
