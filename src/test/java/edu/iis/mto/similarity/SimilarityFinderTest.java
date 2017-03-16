@@ -1,10 +1,16 @@
 package edu.iis.mto.similarity;
 
+import org.hamcrest.Matcher;
+import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.hamcrest.Matchers.emptyIterable;
-import static org.hamcrest.Matchers.is;
+import java.util.AbstractList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
 public class SimilarityFinderTest {
@@ -25,5 +31,30 @@ public class SimilarityFinderTest {
 
         assertThat(actual, is(1.d));
         assertThat(mockSequenceSeeker.calls, emptyIterable());
+    }
+
+    private static Integer[] intsToArray(int[] array) {
+        Integer[] result = new Integer[array.length];
+        for (int i = 0; i < array.length; i++) {
+            result[i] = array[i];
+        }
+        return result;
+    }
+
+    @Test
+    public void testCalculateJackardSimilarity_SameArrays() throws Exception {
+        final int[] ints1 = new int[]{1, 5, -3, 12, 69, 8};
+        int[] ints2 = new int[ints1.length];
+        System.arraycopy(ints1, 0, ints2, 0, ints1.length);
+
+        double actual = finder.calculateJackardSimilarity(ints1, ints2);
+
+        assertThat(actual, is(1.0d));
+
+        for(MockSequenceSeeker.Call call : mockSequenceSeeker.calls) {
+            assertThat(call.param, isIn(intsToArray(ints1)));
+            assertThat(call.sequence, isOneOf(ints1, ints2));
+        }
+
     }
 }
