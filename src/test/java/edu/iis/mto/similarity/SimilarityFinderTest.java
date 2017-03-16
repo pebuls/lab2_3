@@ -1,14 +1,7 @@
 package edu.iis.mto.similarity;
 
-import org.hamcrest.Matcher;
-import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.AbstractList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
@@ -53,14 +46,14 @@ public class SimilarityFinderTest {
 
         for(MockSequenceSeeker.Call call : mockSequenceSeeker.calls) {
             assertThat(call.param, isIn(intsToArray(ints1)));
-            assertThat(call.sequence, isOneOf(ints2));
+            assertThat(call.sequence, is(ints2));
         }
 
     }
 
     @Test
     public void testCalculateJackardSimilarity_FullyDifferentArrays() throws Exception {
-        int[] ints1 = new int[]{1, 5, -3, 12, 69, 8};
+        int[] ints1 = new int[]{1, 5, -3, 12, 8};
         int[] ints2 = new int[]{0, -5, 9, 13, 169};
 
         double actual = finder.calculateJackardSimilarity(ints1, ints2);
@@ -69,8 +62,22 @@ public class SimilarityFinderTest {
 
         for(MockSequenceSeeker.Call call : mockSequenceSeeker.calls) {
             assertThat(call.param, isIn(intsToArray(ints1)));
-            assertThat(call.sequence, isOneOf(ints2));
+            assertThat(call.sequence, is(ints2));
         }
+    }
 
+    @Test
+    public void testCalculateJackardSimilarity_PartiallySame() throws Exception {
+        int[] ints1 = new int[]{1, 5, -3, 12, 69};
+        int[] ints2 = new int[]{0, 1 ,9, 7, 13};
+
+        double actual = finder.calculateJackardSimilarity(ints1, ints2);
+
+        assertThat(actual, is(0.2d));
+
+        for(MockSequenceSeeker.Call call : mockSequenceSeeker.calls) {
+            assertThat(call.param, isIn(intsToArray(ints1)));
+            assertThat(call.sequence, is(ints2));
+        }
     }
 }
