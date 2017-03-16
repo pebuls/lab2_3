@@ -80,4 +80,19 @@ public class SimilarityFinderTest {
             assertThat(call.sequence, is(ints2));
         }
     }
+
+    @Test
+    public void testCalculateJackardSimilarity_PartiallySame_DifferentLength() throws Exception {
+        int[] ints1 = new int[]{2, 9, 13, 69};
+        int[] ints2 = new int[]{13};
+
+        double actual = finder.calculateJackardSimilarity(ints1, ints2);
+
+        assertThat(actual, is(0.25d));
+
+        for(MockSequenceSeeker.Call call : mockSequenceSeeker.calls) {
+            assertThat(call.param, isIn(intsToArray(ints1)));
+            assertThat(call.sequence, is(ints2));
+        }
+    }
 }
