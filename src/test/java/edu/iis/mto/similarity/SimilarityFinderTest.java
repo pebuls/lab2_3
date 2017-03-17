@@ -29,4 +29,14 @@ public class SimilarityFinderTest {
 
         assertThat(actual, is(1.0d));
     }
+    @Test
+    public void test_sameArrays() throws Exception {
+        int[] tab1 = new int[] {1,2,3};
+        int[] tab2 = new int[] {3,2,1};
+
+        double actual = similarityFinder.calculateJackardSimilarity(tab1, tab2);
+
+        assertThat(actual, is(1.0d));
+    }
+
 }
