@@ -95,4 +95,15 @@ public class TestSimilarityFinder {
 		finder.calculateJackardSimilarity(seq1, seq2);
 		assertThat(mocker.howManyCalls, is(equalTo(2)));
 	}
+	
+	@Test
+	public void SearchForSequenceMockerCorrectInputArguments() {
+		SearchForSequenceMocker mocker = new SearchForSequenceMocker();
+		SimilarityFinder finder = new SimilarityFinder(mocker);
+		int[] seq1 = {1, 2, 3};
+		int[] seq2 = {3, 4, 5};
+		finder.calculateJackardSimilarity(seq1, seq2);
+		assertThat(mocker.key, is(equalTo(3)));
+		assertThat(mocker.seq, is(equalTo(seq2)));
+	}
 }
