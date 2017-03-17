@@ -55,4 +55,14 @@ public class TestSimilarityFinder {
 		double result = finder.calculateJackardSimilarity(seq1, seq2);
 		assertThat(result, is(equalTo(0.5)));
 	}
+	
+	@Test
+	public void FindSimilarityMostlySameNotSameLengths() {
+		SearchForSequenceMocker mocker = new SearchForSequenceMocker();
+		SimilarityFinder finder = new SimilarityFinder(mocker);
+		int[] seq1 = {1, 2, 3};
+		int[] seq2 = {1, 2, 3, 4};
+		double result = finder.calculateJackardSimilarity(seq1, seq2);
+		assertThat(result, is(equalTo(0.75)));
+	}
 }
