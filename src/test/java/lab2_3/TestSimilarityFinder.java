@@ -17,5 +17,13 @@ public class TestSimilarityFinder {
 		int[] seq1 = null, seq2 = null;
 		double result = finder.calculateJackardSimilarity(seq1, seq2);
 	}
-
+	
+	@Test
+	public void FindSimilarityEmpty() {
+		SearchForSequenceMocker mocker = new SearchForSequenceMocker();
+		SimilarityFinder finder = new SimilarityFinder(mocker);
+		int[] seq1 = new int[0], seq2 = new int[0];
+		double result = finder.calculateJackardSimilarity(seq1, seq2);
+		assertThat(result, is(equalTo(1.0)));
+	}
 }
