@@ -15,7 +15,7 @@ public class TestSimilarityFinder {
 		SearchForSequenceMocker mocker = new SearchForSequenceMocker();
 		SimilarityFinder finder = new SimilarityFinder(mocker);
 		int[] seq1 = null, seq2 = null;
-		double result = finder.calculateJackardSimilarity(seq1, seq2);
+		finder.calculateJackardSimilarity(seq1, seq2);
 	}
 	
 	@Test
