@@ -51,7 +51,7 @@ public class SimilarityFinderTest {
 
     @Test
     public void test_oneElemArrays() throws Exception {
-        int[] tab1 = new int[] {1,2,};
+        int[] tab1 = new int[] {1,2};
         int[] tab2 = new int[] {4,1,5};
 
         double actual = similarityFinder.calculateJackardSimilarity(tab1, tab2);
@@ -60,4 +60,13 @@ public class SimilarityFinderTest {
     }
 
 
+    @Test
+    public void test_searcherInvokeCount() throws Exception {
+        int[] tab1 = new int[] {1,3,7};
+        int[] tab2 = new int[] {4,1,5};
+
+        similarityFinder.calculateJackardSimilarity(tab1, tab2);
+        assertThat(searcher.callCount, is (3));
+
+    }
 }
