@@ -67,6 +67,21 @@ public class SimilarityFinderTest {
 
         similarityFinder.calculateJackardSimilarity(tab1, tab2);
         assertThat(searcher.callCount, is (3));
+    }
 
+    @Test
+    public void test_searcherCorrectParams() throws Exception {
+        int[] tab1 = new int[] {5,3,-7};
+        int[] tab2 = new int[] {4,1,5,0};
+
+        similarityFinder.calculateJackardSimilarity(tab1, tab2);
+
+        for(int i : tab1) {
+            assertThat(searcher.params2, hasItem(i));
+        }
+
+        for(int[] ints : searcher.params){
+            assertThat(ints, equalTo(tab2));
+        }
     }
 }
