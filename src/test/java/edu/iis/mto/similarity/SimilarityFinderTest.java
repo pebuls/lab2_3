@@ -111,4 +111,14 @@ public class SimilarityFinderTest {
         similarityFinder.calculateJackardSimilarity(seq1, seq2);
         Assert.assertThat(mockSequnceSearcher.callsCounter, is(equalTo(2)));
     }
+
+    @Test
+    public void properArgumentsCheck(){
+        int[] seq1 = {10, 20, 30};
+        int[] seq2 = {30, 60, 90};
+
+        similarityFinder.calculateJackardSimilarity(seq1, seq2);
+        Assert.assertThat(mockSequnceSearcher.key, is(equalTo(30)));
+        Assert.assertThat(mockSequnceSearcher.seq, is(equalTo(seq2)));
+    }
 }
