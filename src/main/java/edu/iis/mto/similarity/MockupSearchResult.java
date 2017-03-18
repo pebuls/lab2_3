@@ -7,11 +7,14 @@ import edu.iis.mto.search.SearchResult;
  */
 public class MockupSearchResult implements SearchResult {
 
+    private boolean found;
+    private int position;
+
     public boolean isFound() {
-        return false;
+        return this.found;
     }
 
     public int getPosition() {
-        return 0;
+        return this.position;
     }
 }
