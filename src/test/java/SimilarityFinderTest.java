@@ -59,4 +59,15 @@ public class SimilarityFinderTest {
 
         assertThat(result, is(EXPECTED_RESULT));
     }
+
+    @Test
+    public void differentLengthsSameElementsArraysSimilarity() {
+        final double EXPECTED_RESULT = 0.75;
+        final int[] ARR1 = {1, 2, 3};
+        final int[] ARR2 = {1, 2, 3, 4};
+
+        double result = similarityFinder.calculateJackardSimilarity(ARR1, ARR2);
+
+        assertThat(result, is(EXPECTED_RESULT));
+    }
 }
