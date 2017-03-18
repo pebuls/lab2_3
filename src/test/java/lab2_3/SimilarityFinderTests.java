@@ -47,5 +47,12 @@ public class SimilarityFinderTests {
 		double result = sFinder.calculateJackardSimilarity(seq1, seq2);
 		assertThat(result, is(equalTo(0.75)));
 	}
+	
+	@Test
+	public void testOneElementSameDifferentLength() {
+		int[] seq1 = {4,7}, seq2 = {7,1,2,5};
+		double result = sFinder.calculateJackardSimilarity(seq1, seq2);
+		assertThat(result, is(equalTo(0.2)));
+	}
 
 }
