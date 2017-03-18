@@ -49,4 +49,13 @@ public class SimilarityFinderTest {
         double result = similarityFinder.calculateJackardSimilarity(seq1, seq2);
         Assert.assertThat(result, is(equalTo(0.75)));
     }
+
+    @Test
+    public void emptyArraysTest(){
+        int[] seq1 = {};
+        int[] seq2 = {};
+
+        double result = similarityFinder.calculateJackardSimilarity(seq1, seq2);
+        Assert.assertThat(result, is(equalTo(1.0)));
+    }
 }
