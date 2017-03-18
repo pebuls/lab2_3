@@ -54,5 +54,12 @@ public class SimilarityFinderTests {
 		double result = sFinder.calculateJackardSimilarity(seq1, seq2);
 		assertThat(result, is(equalTo(0.2)));
 	}
+	
+	@Test (expected = NullPointerException.class)
+	public void testNulls() {
+		int[] seq1 = null, seq2 = null;
+		double result = sFinder.calculateJackardSimilarity(seq1, seq2);
+		assertThat(result, is(equalTo(1.0)));
+	}
 
 }
