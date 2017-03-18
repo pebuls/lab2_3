@@ -19,5 +19,12 @@ public class SimilarityFinderTests {
 		double result = sFinder.calculateJackardSimilarity(seq1, seq2);
 		assertThat(result, is(equalTo(1.0)));		
 	}
+	
+	@Test
+	public void testSame() {
+		int[] seq1 = {4,7,3}, seq2 = {7,3,4};
+		double result = sFinder.calculateJackardSimilarity(seq1, seq2);
+		assertThat(result, is(equalTo(1.0)));
+	}
 
 }
