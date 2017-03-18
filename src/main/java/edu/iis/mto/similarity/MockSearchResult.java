@@ -16,10 +16,10 @@ public class MockSearchResult implements SearchResult{
     }
 
     public boolean isFound() {
-        return false;
+        return this.found;
     }
 
     public int getPosition() {
-        return 0;
+        return this.position;
     }
 }
