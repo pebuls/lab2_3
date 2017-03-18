@@ -76,4 +76,12 @@ public class SimilarityFinderTest {
         double result = similarityFinder.calculateJackardSimilarity(seq1, seq2);
         Assert.assertThat(result, is(equalTo(0.2)));
     }
+
+    @Test
+    public void arraysWithMaxInt(){
+        int[] seq1 = new int[Integer.MAX_VALUE];
+        int[] seq2 = new int[Integer.MAX_VALUE];
+
+        double result = similarityFinder.calculateJackardSimilarity(seq1, seq2);
+    }
 }
