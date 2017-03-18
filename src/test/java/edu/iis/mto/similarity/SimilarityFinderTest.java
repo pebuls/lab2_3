@@ -102,4 +102,13 @@ public class SimilarityFinderTest {
         double result = similarityFinder.calculateJackardSimilarity(seq1, seq2);
         Assert.assertThat(result, is(equalTo(0.0)));
     }
+
+    @Test
+    public void callsCounterCheck(){
+        int[] seq1 = {10, 20};
+        int[] seq2 = {50, 60};
+
+        similarityFinder.calculateJackardSimilarity(seq1, seq2);
+        Assert.assertThat(mockSequnceSearcher.callsCounter, is(equalTo(2)));
+    }
 }
