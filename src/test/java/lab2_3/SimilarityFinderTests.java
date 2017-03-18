@@ -75,5 +75,13 @@ public class SimilarityFinderTests {
 		double result = sFinder.calculateJackardSimilarity(seq1, seq2);
 		assertThat(sMockFinder.getCallCount(), is(equalTo(3)));
 	}
+	
+	@Test
+	public void testParams() {
+		int[] seq1 = {4,7,3}, seq2 = {7,4,2};
+		double result = sFinder.calculateJackardSimilarity(seq1, seq2);
+		assertThat(sMockFinder.getKey(), is(equalTo(3)));
+		assertThat(sMockFinder.getSeq(), is(equalTo(seq2)));
+	}
 
 }
