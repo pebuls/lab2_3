@@ -7,4 +7,7 @@ import static org.junit.Assert.*;
  */
 public class SimilarityFinderTest {
 
+    private MockSequnceSearcher mockSequnceSearcher = new MockSequnceSearcher();
+    private SimilarityFinder similarityFinder = new SimilarityFinder(mockSequnceSearcher);
+
 }
