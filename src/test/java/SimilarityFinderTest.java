@@ -15,7 +15,7 @@ public class SimilarityFinderTest {
     private SimilarityFinder similarityFinder = new SimilarityFinder(mockSequenceSearcher);
 
     @Test
-    public void sameSimilarity() {
+    public void sameArraysSimilarity() {
         final double EXPECTED_RESULT = 1.0;
         final int[] ARR1 = {1, 2, 3, 4};
         final int[] ARR2 = {1, 2, 3, 4};
