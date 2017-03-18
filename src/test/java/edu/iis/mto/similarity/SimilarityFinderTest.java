@@ -77,7 +77,7 @@ public class SimilarityFinderTest {
         Assert.assertThat(result, is(equalTo(0.2)));
     }
 
-    @Test
+    @Test(expected = OutOfMemoryError.class)
     public void arraysWithMaxInt(){
         int[] seq1 = new int[Integer.MAX_VALUE];
         int[] seq2 = new int[Integer.MAX_VALUE];
