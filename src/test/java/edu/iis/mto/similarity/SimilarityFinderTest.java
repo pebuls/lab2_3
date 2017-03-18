@@ -34,7 +34,7 @@ public class SimilarityFinderTest {
     }
 
     @Test(expected = NullPointerException.class)
-    public void emptyArraysTest(){
+    public void nullArraysTest(){
         int[] seq1 = null;
         int[] seq2 = null;
 
