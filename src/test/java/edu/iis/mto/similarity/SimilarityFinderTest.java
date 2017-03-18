@@ -84,4 +84,13 @@ public class SimilarityFinderTest {
 
         double result = similarityFinder.calculateJackardSimilarity(seq1, seq2);
     }
+
+    @Test
+    public void sameLengthArraysWithTwoSameElementsOnDifferentPositions(){
+        int[] seq1 = {10, 20, 30};
+        int[] seq2 = {20, 15, 10};
+
+        double result = similarityFinder.calculateJackardSimilarity(seq1, seq2);
+        Assert.assertThat(result, is(equalTo(0.5)));
+    }
 }
