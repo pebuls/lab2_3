@@ -10,6 +10,11 @@ public class MockupSearchResult implements SearchResult {
     private boolean found;
     private int position;
 
+    public MockupSearchResult(boolean found, int position) {
+        this.found = found;
+        this.position = position;
+    }
+
     public boolean isFound() {
         return this.found;
     }
