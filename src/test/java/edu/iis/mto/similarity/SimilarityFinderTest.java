@@ -40,4 +40,14 @@ public class SimilarityFinderTest {
         assertThat(similarityResult, is(1.0));
     }
 
+    @Test
+    public void checkTwoDifferentSequences() {
+        int[] firstSeqeunce = new int[] {1, 2, 3};
+        int[] secondSeqeunce = new int[] {4, 5, 6};
+
+        double similarityResult = similarityFinder.calculateJackardSimilarity(firstSeqeunce,secondSeqeunce);
+
+        assertThat(similarityResult, is(0.0));
+    }
+
 }
