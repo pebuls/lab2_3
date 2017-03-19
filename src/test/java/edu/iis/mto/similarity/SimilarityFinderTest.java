@@ -77,4 +77,14 @@ public class SimilarityFinderTest {
 
         double similarityResult = similarityFinder.calculateJackardSimilarity(firstSeqeunce,secondSeqeunce);
     }
+
+    @Test
+    public void checkSequencesWithDifferentDimensions() {
+        int[] firstSeqeunce = new int[] {1, 3};
+        int[] secondSeqeunce = new int[] {1, 2, 6};
+
+        double similarityResult = similarityFinder.calculateJackardSimilarity(firstSeqeunce,secondSeqeunce);
+
+        assertThat(similarityResult, is(0.25));
+    }
 }
