@@ -22,11 +22,19 @@ public class SimilarityFinderTest {
         double actual = similarityFinder.calculateJackardSimilarity(seq1,seq2);
         Assert.assertThat(actual, is(equalTo(1.0)));
     }
-    @Test (expected = IllegalArgumentException.class)
+    @Test
     public void emptyFirstSequence(){
+        int seq1[] = {};
+        int seq2[] = {4,3,6};
+        double actual = similarityFinder.calculateJackardSimilarity(seq1,seq2);
+        Assert.assertThat(actual, is(equalTo(0.0)));
+    }
+    @Test (expected = IllegalArgumentException.class)
+    public void emptySecondSequence(){
         int seq1[] = {1,2,3};
         int seq2[] = {};
         double actual = similarityFinder.calculateJackardSimilarity(seq1,seq2);
     }
+
 
 }
