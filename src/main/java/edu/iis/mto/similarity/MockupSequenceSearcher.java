@@ -8,7 +8,14 @@ import edu.iis.mto.search.SequenceSearcher;
  */
 public class MockupSequenceSearcher implements SequenceSearcher {
 
+    private int index = -1;
+    private int[] seq = null;
+
     public SearchResult search(int index, int[] seq) {
+
+        this.index=index;
+        this.seq=seq;
+
         for (int i=0; i<seq.length; i++) {
             if(seq[i]==index) {
                 return new MockupSearchResult(true, index);
