@@ -28,6 +28,10 @@ public class MockSequenceSeeker implements SequenceSearcher {
     }
 
     public SearchResult search(int i, int[] ints) {
-        return null;
+        for(int j=0;j<ints.length;j++){
+            if(ints[j]==i){
+                return new MockSearchResult(true,j);
+            }
+        }
     }
 }
