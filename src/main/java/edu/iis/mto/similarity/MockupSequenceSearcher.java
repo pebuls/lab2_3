@@ -23,4 +23,12 @@ public class MockupSequenceSearcher implements SequenceSearcher {
         }
         return new MockupSearchResult(false, -1);
     }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public int[] getSeq() {
+        return seq;
+    }
 }
