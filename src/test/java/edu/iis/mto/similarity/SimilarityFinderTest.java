@@ -69,4 +69,12 @@ public class SimilarityFinderTest {
 
         assertThat(similarityResult, is(0.5));
     }
+
+    @Test(expected = NullPointerException.class)
+    public void checkNullPointerExceptionForSequences() {
+        int[] firstSeqeunce = null;
+        int[] secondSeqeunce = null;
+
+        double similarityResult = similarityFinder.calculateJackardSimilarity(firstSeqeunce,secondSeqeunce);
+    }
 }
