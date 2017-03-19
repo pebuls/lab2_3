@@ -1,8 +1,12 @@
 package edu.iis.mto.similarity;
 
+import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.emptyIterable;
 import static org.hamcrest.Matchers.isIn;
 import static org.hamcrest.Matchers.isOneOf;
 
@@ -32,6 +36,7 @@ public class SimilarityFinderTest {
         int[] seq1 = {1,2,3,4,5};
         int[] seq2 = seq1;
         double result = finder.calculateJackardSimilarity(seq1,seq2);
+        Assert.assertThat(result,is(1.0));
 
         Integer[] convertedSeq1 = convertIntArrayToIntegerArray(seq1);
 
@@ -41,5 +46,14 @@ public class SimilarityFinderTest {
             Assert.assertThat(call.getSearchedSequence(),isOneOf(seq1,seq2));
 
         }
+    }
+
+    @Test public void calculateJackardSimilarity_emptySequences(){
+        int[] seq1 = {};
+        int[] seq2 = seq1;
+        double result = finder.calculateJackardSimilarity(seq1,seq2);
+        Assert.assertThat(result,is(1.0));
+        Assert.assertThat(mockSequenceSeeker.calls, emptyIterable());
+
     }
 }
