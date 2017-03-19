@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 public class SimilarityFinderTest {
 
     @Test
-    public void checkTwoEmptySequence() {
+    public void checkTwoEmptySequences() {
         MockupSequenceSearcher mockupSequenceSearcher = new MockupSequenceSearcher();
         SimilarityFinder similarityFinder = new SimilarityFinder(mockupSequenceSearcher);
 
@@ -23,4 +23,16 @@ public class SimilarityFinderTest {
         assertThat(similarityResult, is(1.0));
     }
 
+    @Test
+    public void checkTwoSameSequences() {
+        MockupSequenceSearcher mockupSequenceSearcher = new MockupSequenceSearcher();
+        SimilarityFinder similarityFinder = new SimilarityFinder(mockupSequenceSearcher);
+
+        int[] firstSeqeunce = new int[] {1, 2, 3};
+        int[] secondSeqeunce = new int[] {1, 2, 3};
+
+        double similarityResult = similarityFinder.calculateJackardSimilarity(firstSeqeunce,secondSeqeunce);
+
+        assertThat(similarityResult, is(1.0));
+    }
 }
