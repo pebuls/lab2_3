@@ -8,7 +8,7 @@ import static org.hamcrest.Matchers.is;
 
 public class SimilarityFinderTest {
     @Test
-    public void sameSequencestest(){
+    public void sameSequencesTest(){
         SimilarityFinder similarityFinder = new SimilarityFinder(new MockSequenceSearcher());
         int seq1[] = {1,2,3};
         int seq2[] = {1,2,3};
