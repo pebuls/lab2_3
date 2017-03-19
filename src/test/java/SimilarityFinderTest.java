@@ -7,7 +7,8 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
 public class SimilarityFinderTest {
-    private SimilarityFinder similarityFinder = new SimilarityFinder(new MockSequenceSearcher());
+    MockSequenceSearcher mockSequenceSearcher = new MockSequenceSearcher();
+    private SimilarityFinder similarityFinder = new SimilarityFinder(mockSequenceSearcher);
     @Test
     public void sameSequencesTest(){
         int seq1[] = {1,2,3};
@@ -50,6 +51,12 @@ public class SimilarityFinderTest {
         double actual2 = similarityFinder.calculateJackardSimilarity(seq2,seq1);
         Assert.assertThat(actual, is(equalTo(actual2)));
     }
-
+    @Test
+    public void numberOfSearchCallsTest(){
+        int seq1[] = {1,2,3};
+        int seq2[] = {1,2,3};
+        double actual = similarityFinder.calculateJackardSimilarity(seq1,seq2);
+        Assert.assertThat(mockSequenceSearcher.getCallCounter(),is(equalTo(3)));
+    }
 
 }

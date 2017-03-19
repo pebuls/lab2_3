@@ -5,7 +5,10 @@ import edu.iis.mto.search.SequenceSearcher;
 
 
 public class MockSequenceSearcher implements SequenceSearcher {
+    private int callCounter =0;
+    public int getCallCounter(){return callCounter;}
     public SearchResult search(int key, int[] ints) {
+        ++callCounter;
         if(ints.length==0){
             throw new IllegalArgumentException();
         }
