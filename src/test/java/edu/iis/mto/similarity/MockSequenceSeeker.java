@@ -50,11 +50,13 @@ public class MockSequenceSeeker implements SequenceSearcher {
     }
 
     public SearchResult search(int i, int[] ints) {
-        calls.add(i,ints);
+        calls.add(new SearchMethodCall(i,ints));
         for(int j=0;j<ints.length;j++){
             if(ints[j]==i){
                 return new MockSearchResult(true,j);
             }
         }
+
+        return new MockSearchResult(false,-1);
     }
 }
