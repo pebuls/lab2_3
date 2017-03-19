@@ -109,5 +109,25 @@ public class SimilarityFinderTest {
 
     }
 
+    @Test public void calculateJackardSimilarity_totallyDifferentSequences_differentLength(){
+        int[] seq1 = {1,2,3,4};
+        int[] seq2 = {5};
+        double result = finder.calculateJackardSimilarity(seq1,seq2);
+
+        Assert.assertThat(result,is(0.0));
+
+        Integer[] convertedSeq1 = convertIntArrayToIntegerArray(seq1);
+        Assert.assertThat(mockSequenceSeeker.calls.size(),is(4));
+
+        for(MockSequenceSeeker.SearchMethodCall call : mockSequenceSeeker.calls){
+
+            Assert.assertThat(call.getSearchedKey(),isIn(convertedSeq1));
+            Assert.assertThat(call.getSearchedSequence(),isOneOf(seq1,seq2));
+
+        }
+
+
+    }
+
 
 }
