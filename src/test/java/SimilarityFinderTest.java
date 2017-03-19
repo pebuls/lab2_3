@@ -35,6 +35,14 @@ public class SimilarityFinderTest {
         int seq2[] = {};
         double actual = similarityFinder.calculateJackardSimilarity(seq1,seq2);
     }
+    @Test
+    public void secondIsHalfFirstSequence(){
+        int seq1[] = {1,2,3,4,5,6,7,8,9,10};
+        int seq2[] = {1,2,3,4,5};
+        double actual = similarityFinder.calculateJackardSimilarity(seq1,seq2);
+        Assert.assertThat(actual, is(equalTo(0.5)));
+        System.out.print(actual);
+    }
 
 
 }
