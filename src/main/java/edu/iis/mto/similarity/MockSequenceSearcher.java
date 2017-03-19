@@ -9,13 +9,11 @@ public class MockSequenceSearcher implements SequenceSearcher {
         if(ints.length==0){
             throw new IllegalArgumentException();
         }
-        
         for(int i=0;i<ints.length;i++){
             if(ints[i]==key){
                 return new MockSearchResult(true, i);
             }
         }
-
         return new MockSearchResult(false, -1);
     }
 }
