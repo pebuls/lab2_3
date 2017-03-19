@@ -98,4 +98,14 @@ public class SimilarityFinderTest {
         assertThat(mockupSequenceSearcher.getIndex(), is(3));
         assertThat(mockupSequenceSearcher.getSeq(), is(secondSeqeunce));
     }
+
+    @Test
+    public void checkCallsForMockuSequenceSearcher() {
+        int[] firstSeqeunce = new int[] {1, 3, 6};
+        int[] secondSeqeunce = new int[] {1, 2, 3, 4};
+
+        double similarityResult = similarityFinder.calculateJackardSimilarity(firstSeqeunce,secondSeqeunce);
+
+        assertThat(mockupSequenceSearcher.getCount(), is(3));
+    }
 }
