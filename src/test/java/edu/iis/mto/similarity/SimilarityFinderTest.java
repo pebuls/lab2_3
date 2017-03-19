@@ -59,4 +59,14 @@ public class SimilarityFinderTest {
 
         assertThat(similarityResult, is(0.2));
     }
+
+    @Test
+    public void checkSequencesThatHaveTwoSameElement() {
+        int[] firstSeqeunce = new int[] {1, 2, 3};
+        int[] secondSeqeunce = new int[] {1, 2, 6};
+
+        double similarityResult = similarityFinder.calculateJackardSimilarity(firstSeqeunce,secondSeqeunce);
+
+        assertThat(similarityResult, is(0.5));
+    }
 }
