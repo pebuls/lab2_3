@@ -1,4 +1,4 @@
-import edu.iis.mto.similarity.MockSequenceSearcher;
+import edu.iis.mto.similarity.StubSequenceSearcher;
 import edu.iis.mto.similarity.SimilarityFinder;
 import org.junit.Assert;
 import org.junit.Test;
@@ -7,7 +7,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
 public class SimilarityFinderTest {
-    MockSequenceSearcher mockSequenceSearcher = new MockSequenceSearcher();
+    StubSequenceSearcher mockSequenceSearcher = new StubSequenceSearcher();
     private SimilarityFinder similarityFinder = new SimilarityFinder(mockSequenceSearcher);
     @Test
     public void sameSequencesTest(){

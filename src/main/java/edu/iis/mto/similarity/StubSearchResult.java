@@ -1,11 +1,11 @@
 package edu.iis.mto.similarity;
 import edu.iis.mto.search.SearchResult;
 
-public class MockSearchResult implements SearchResult {
+public class StubSearchResult implements SearchResult {
     private boolean isFound;
     private int position;
 
-    public MockSearchResult(boolean isFound, int position){
+    public StubSearchResult(boolean isFound, int position){
         this.isFound = isFound;
         this.position = position;
     }

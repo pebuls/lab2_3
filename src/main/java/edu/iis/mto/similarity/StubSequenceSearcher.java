@@ -4,7 +4,7 @@ import edu.iis.mto.search.SearchResult;
 import edu.iis.mto.search.SequenceSearcher;
 
 
-public class MockSequenceSearcher implements SequenceSearcher {
+public class StubSequenceSearcher implements SequenceSearcher {
     private int callCounter =0;
     private int key;
     private int[] seq = {};
@@ -21,10 +21,10 @@ public class MockSequenceSearcher implements SequenceSearcher {
         }
         for(int i=0;i<ints.length;i++){
             if(ints[i]==key){
-                return new MockSearchResult(true, i);
+                return new StubSearchResult(true, i);
             }
         }
-        return new MockSearchResult(false, -1);
+        return new StubSearchResult(false, -1);
     }
 
 
