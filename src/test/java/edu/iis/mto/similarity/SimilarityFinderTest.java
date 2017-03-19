@@ -1,5 +1,6 @@
 package edu.iis.mto.similarity;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -10,11 +11,17 @@ import static org.junit.Assert.*;
  */
 public class SimilarityFinderTest {
 
+    private MockupSequenceSearcher mockupSequenceSearcher;
+    private SimilarityFinder similarityFinder;
+
+    @Before
+    public void setUp() throws Exception {
+        mockupSequenceSearcher = new MockupSequenceSearcher();
+        similarityFinder = new SimilarityFinder(mockupSequenceSearcher);
+    }
+
     @Test
     public void checkTwoEmptySequences() {
-        MockupSequenceSearcher mockupSequenceSearcher = new MockupSequenceSearcher();
-        SimilarityFinder similarityFinder = new SimilarityFinder(mockupSequenceSearcher);
-
         int[] firstSeqeunce = new int[0];
         int[] secondSeqeunce = new int[0];
 
@@ -25,9 +32,6 @@ public class SimilarityFinderTest {
 
     @Test
     public void checkTwoSameSequences() {
-        MockupSequenceSearcher mockupSequenceSearcher = new MockupSequenceSearcher();
-        SimilarityFinder similarityFinder = new SimilarityFinder(mockupSequenceSearcher);
-
         int[] firstSeqeunce = new int[] {1, 2, 3};
         int[] secondSeqeunce = new int[] {1, 2, 3};
 
@@ -35,4 +39,5 @@ public class SimilarityFinderTest {
 
         assertThat(similarityResult, is(1.0));
     }
+
 }
