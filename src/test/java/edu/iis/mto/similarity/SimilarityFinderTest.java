@@ -37,7 +37,7 @@ public class SimilarityFinderTest {
         int[] seq2 = seq1;
         double result = finder.calculateJackardSimilarity(seq1,seq2);
         Assert.assertThat(result,is(1.0));
-
+        Assert.assertThat(mockSequenceSeeker.calls.size(),is(5));
         Integer[] convertedSeq1 = convertIntArrayToIntegerArray(seq1);
 
         for(MockSequenceSeeker.SearchMethodCall call : mockSequenceSeeker.calls){
@@ -62,6 +62,7 @@ public class SimilarityFinderTest {
         int[] seq2 = {2,3,4,5};
         double result = finder.calculateJackardSimilarity(seq1,seq2);
         Assert.assertThat(result,is(0.6));
+        Assert.assertThat(mockSequenceSeeker.calls.size(),is(4));
         Integer[] convertedSeq1 = convertIntArrayToIntegerArray(seq1);
 
         for(MockSequenceSeeker.SearchMethodCall call : mockSequenceSeeker.calls){
@@ -77,6 +78,7 @@ public class SimilarityFinderTest {
         int[] seq2 = {2,3,4,5,6};
         double result = finder.calculateJackardSimilarity(seq1,seq2);
         Assert.assertThat(result,is(0.5));
+        Assert.assertThat(mockSequenceSeeker.calls.size(),is(4));
         Integer[] convertedSeq1 = convertIntArrayToIntegerArray(seq1);
 
         for(MockSequenceSeeker.SearchMethodCall call : mockSequenceSeeker.calls){
@@ -85,6 +87,26 @@ public class SimilarityFinderTest {
             Assert.assertThat(call.getSearchedSequence(),isOneOf(seq1,seq2));
 
         }
+    }
+
+    @Test public void calculateJackardSimilarity_totallyDifferentSequences_sameLength(){
+        int[] seq1 = {1,2,3,4};
+        int[] seq2 = {5,6,7,8};
+        double result = finder.calculateJackardSimilarity(seq1,seq2);
+
+        Assert.assertThat(result,is(0.0));
+
+        Integer[] convertedSeq1 = convertIntArrayToIntegerArray(seq1);
+        Assert.assertThat(mockSequenceSeeker.calls.size(),is(4));
+
+        for(MockSequenceSeeker.SearchMethodCall call : mockSequenceSeeker.calls){
+
+            Assert.assertThat(call.getSearchedKey(),isIn(convertedSeq1));
+            Assert.assertThat(call.getSearchedSequence(),isOneOf(seq1,seq2));
+
+        }
+
+
     }
 
 
