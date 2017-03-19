@@ -20,8 +20,13 @@ public class SimilarityFinderTest {
         int seq1[] = {};
         int seq2[] = {};
         double actual = similarityFinder.calculateJackardSimilarity(seq1,seq2);
-        System.out.println(actual);
         Assert.assertThat(actual, is(equalTo(1.0)));
+    }
+    @Test (expected = IllegalArgumentException.class)
+    public void emptyFirstSequence(){
+        int seq1[] = {1,2,3};
+        int seq2[] = {};
+        double actual = similarityFinder.calculateJackardSimilarity(seq1,seq2);
     }
 
 }
