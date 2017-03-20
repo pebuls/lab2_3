@@ -4,11 +4,15 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import edu.iis.mto.similarity.SimilarityFinder;
 
 public class SimilarityFinderTest {
+	
+	//SequenceMockFinder sMockFinder = new SequenceMockFinder();
+	//SimilarityFinder sFinder = new SimilarityFinder(sMockFinder);
 
 	@Test
 	public void testCalculateJackardSimilarity() {
@@ -17,14 +21,13 @@ public class SimilarityFinderTest {
 		Double result = SimilarityFinder.calculateJackardSimilarity(seq1, seq2);
 		assertThat(1.0, is(equalTo(result)));
 	}
-	
-	@Test 
-	public void testCalculateJackardSimilarityCase2() {
-		int[] seq1 = {1, 2, 3, 4};
-		int[] seq2 = {2, 3, 4, 5};
-		int intersectSize = 3;
-		//Double result = SimilarityFinder.calculateJackardSimilarity(seq1, seq2);
-		//assertThat(0.6, is(equalTo(result)));
-	}
+	@Ignore
+	@Test
+	 	public void testSame() throws NullPointerException {
+	 		int[] seq1 = {4,7,3};
+			int[] seq2 = {7,3,4};
+	 		double result = SimilarityFinder.calculateJackardSimilarity(seq1, seq2);
+			assertThat(result, is(equalTo(1.0)));
+	 	}
 
 }
