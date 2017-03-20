@@ -21,6 +21,18 @@ public class SimilarityFinderTest {
         assertThat(result, is(expected));
     }
 
+    @Test
+    public void testcalculateJackardEmptySeq() throws Exception {
+        SimilarityFinder similarityFinder = new SimilarityFinder(new MockSequenceSearcher());
+        int[] seq1 = new int[] {};
+        int[] seq2 = new int[] {};
+        double expected = (double) 1;
+
+        double result = similarityFinder.calculateJackardSimilarity(seq1,seq2);
+
+        assertThat(result, is(expected));
+    }
+
 
 
 
