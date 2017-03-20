@@ -1,6 +1,7 @@
 package lab2_3;
 
 import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -20,11 +21,22 @@ public class SimilarityFinderTest {
 	}
 
 	@Test (expected = NullPointerException.class)
-	public void testThenTwoArraysAreNull() {
+	public void testWhenTwoArraysAreNull() {
 		int seq1[] = null;
 		int seq2[] = null;
 		
 		finder.calculateJackardSimilarity(seq1, seq2);
+	}
+	
+	@Test
+	public void testWhenTwoArraysAreEmpty() {
+		int seq1[] = {};
+		int seq2[] = {};
+		double testValue = 1.0d;
+		
+		double result = finder.calculateJackardSimilarity(seq1, seq2);
+		
+		assertThat(result, is(testValue));
 	}
 
 }
