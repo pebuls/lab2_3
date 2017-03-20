@@ -3,8 +3,11 @@ package edu.iis.mto.similarity;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.hamcrest.Matchers.comparesEqualTo;
-import static org.hamcrest.Matchers.is;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 /**
@@ -80,6 +83,30 @@ public class SimilarityFinderTest {
         double result = similarityFinder.calculateJackardSimilarity(seq1, seq);
 
         assertThat(dummySequenceSearcher.getCallCounter(), is(expected));
+    }
+
+
+    @Test
+    public void testCalculateJackardSearchParmCheck() {
+        int[] seq = new int[]{1, 2, 3};
+        int[] seq1 = new int[]{1, 2, 5, 4};
+
+        int expected = 4;
+
+        double result = similarityFinder.calculateJackardSimilarity(seq1, seq);
+
+        assertThat(dummySequenceSearcher.getParam(), isIn(getListWithSeq(seq1)));
+        assertThat(dummySequenceSearcher.getSeq(), isOneOf(seq1, seq));
+    }
+
+    private List<Integer> getListWithSeq(int[] seq) {
+        List<Integer> list = new ArrayList<Integer>();
+        for (int i:seq
+             ) {
+            list.add(i);
+
+        }
+        return list;
     }
 
 
