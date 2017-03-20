@@ -28,4 +28,13 @@ public class TestSimilarityFinder {
         assertThat(result, is(1.0d));
     }
     
+    @Test
+    public void testCalculateJackardSimilaritySameSequenceSize(){
+        SequenceSearcher searcher = new DummySequenceSearcher();
+        SimilarityFinder finder = new SimilarityFinder(searcher);        
+        final int[] seq1 = new int[] {1,2,3,4};
+        final int[] seq2 = new int[] {1,2,3,4};
+        double result = finder.calculateJackardSimilarity(seq1, seq2);
+        assertThat(result, is(1.0));
+    }
 }

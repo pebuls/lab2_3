@@ -13,14 +13,20 @@ import edu.iis.mto.search.SearchResult;
  */
 public class DummySearchResult implements SearchResult{
 
-    
+    private boolean shouldFound = false;
+    private int position;
+
+    public DummySearchResult(int position, boolean shouldFound ) {
+        this.position = position;
+        this.shouldFound = shouldFound;
+    }
     
     public boolean isFound() {
-        return true;
+        return shouldFound;
     }
 
     public int getPosition() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return position;
     }
     
 }

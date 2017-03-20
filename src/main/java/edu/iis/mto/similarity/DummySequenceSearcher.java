@@ -15,8 +15,19 @@ import edu.iis.mto.search.SequenceSearcher;
 public class DummySequenceSearcher implements SequenceSearcher {
 
     public SearchResult search(int i, int[] ints) {
+        if(ints == null || ints.length == 0)
+            throw new IllegalArgumentException("Empty sequence");
         
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int lo = 0;
+        int hi = ints.length - 1;
+        while (lo <= hi) {
+            int mid = lo + (hi - lo) / 2;
+            if      (i < ints[mid]) hi = mid - 1;
+            else if (i > ints[mid]) lo = mid + 1;
+            else return new DummySearchResult(mid, true);
+        }
+        return new DummySearchResult(-1, false);
+    
     }
     
 }
