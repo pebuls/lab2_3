@@ -1,5 +1,6 @@
 package mockClasses;
 
+import com.google.common.primitives.Ints;
 import edu.iis.mto.search.SearchResult;
 import edu.iis.mto.search.SequenceSearcher;
 
@@ -8,11 +9,6 @@ import edu.iis.mto.search.SequenceSearcher;
  */
 public class MockSequenceSearcher implements SequenceSearcher {
     public SearchResult search(int i, int[] ints) {
-        for (int l = 0; l < ints.length; ++l) {
-            if (i == ints[l]) {
-                return new MockSearchResult(l);
-            }
-        }
-        return MockSearchResult.valueNotFound();
+        return new MockSearchResult(Ints.asList(ints).indexOf(i));
     }
 }
