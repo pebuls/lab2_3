@@ -55,5 +55,12 @@ public class TestSimilarityFinder {
         double result = finder.calculateJackardSimilarity(seq1, seq2);
         assertThat(result, is(0.25));
     }
-
+    @Test(expected = IllegalArgumentException.class)
+    public void testCalculateJackardSimilarityZero() {
+        SequenceSearcher searcher = new DummySequenceSearcher();
+        SimilarityFinder finder = new SimilarityFinder(searcher);
+        final int[] seq1 = new int[] {1, 2, 3, 4};
+        final int[] seq2 = new int[] {};
+        double result = finder.calculateJackardSimilarity(seq1, seq2);
+    }
 }
