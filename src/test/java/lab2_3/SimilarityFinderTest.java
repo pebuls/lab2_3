@@ -96,4 +96,14 @@ public class SimilarityFinderTest {
 		assertThat(result, is(testValue));
 	}
 	
+	@Test
+	public void testGivenSequenceToSearchMethod() {
+		int seq1[] = {1,4,7};
+		int seq2[] = {7,4,1};
+		
+		finder.calculateJackardSimilarity(seq1, seq2);
+		
+		assertThat(searcher.seq, equalTo(seq2));
+	}
+	
 }
