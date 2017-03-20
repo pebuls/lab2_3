@@ -72,4 +72,15 @@ public class SimilarityFinderTest {
 		assertThat(result, is(testValue));
 	}
 	
+	@Test
+	public void testWhenTwoArraysHaveSomeSameValuesAndDifferentLenght() {
+		int seq1[] = {1,4,7};
+		int seq2[] = {7};
+		double testValue = 1 / 3.0;
+		
+		double result = finder.calculateJackardSimilarity(seq1, seq2);
+		
+		assertThat(result, is(testValue));
+	}
+	
 }
