@@ -96,4 +96,14 @@ public class SimilarityFinderTest {
         Assert.assertThat(finder.calculateJackardSimilarity(seq1, seq2), is(EXPECTED));
         Assert.assertThat(finder.calculateJackardSimilarity(seq2, seq1), is(EXPECTED));
     }
+
+    @Test
+    public void firstSequenceHaveElementNotExistInSecondBiggerSequence() {
+        int[] seq1 = {1, 4};
+        int[] seq2 = {2, 1, 3};
+        final double EXPECTED = 1.0/4.0;
+
+        Assert.assertThat(finder.calculateJackardSimilarity(seq1, seq2), is(EXPECTED));
+        Assert.assertThat(finder.calculateJackardSimilarity(seq2, seq1), is(EXPECTED));
+    }
 }
