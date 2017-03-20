@@ -80,7 +80,6 @@ public class SimilarityFinderTest {
         double result = similarityFinder.calculateJackardSimilarity(seq1, seq);
 
         assertThat(dummySequenceSearcher.getCallCounter(), is(expected));
-
     }
 
 
