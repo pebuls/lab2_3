@@ -7,15 +7,21 @@ import edu.iis.mto.search.SequenceSearcher;
  * Created by Klaudia on 20.03.2017.
  */
 public class MockSequenceSearcher implements SequenceSearcher {
+    private int callCounter = 0;
 
     public SearchResult search(int i, int[] ints) {
         int pos = 0;
+        callCounter++;
         for (int j : ints) {
             if (i == j) {
-                return new MockSearchResult(true,pos);
+                return new MockSearchResult(true, pos);
             }
             pos++;
         }
         return new MockSearchResult(false, -1);
+    }
+
+    public int getCallCounter() {
+        return callCounter;
     }
 }
