@@ -40,10 +40,21 @@ public class SimilarityFinderTest {
 	}
 	
 	@Test
-	public void testWhenTwoArraysHaveTheSameValues	() {
+	public void testWhenTwoArraysHaveTheSameValues() {
 		int seq1[] = {1,4,7};
 		int seq2[] = {1,4,7};
 		double testValue = 1.0;
+		
+		double result = finder.calculateJackardSimilarity(seq1, seq2);
+		
+		assertThat(result, is(testValue));
+	}
+	
+	@Test
+	public void testWhenTwoArraysHaveDifferentValues() {
+		int seq1[] = {1,4,7};
+		int seq2[] = {2,5,8};
+		double testValue = 0.0;
 		
 		double result = finder.calculateJackardSimilarity(seq1, seq2);
 		
