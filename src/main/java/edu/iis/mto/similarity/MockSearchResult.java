@@ -5,7 +5,9 @@ import edu.iis.mto.search.SearchResult;
 public class MockSearchResult implements SearchResult{
 	
 	private boolean found = false;
-	private int position;
+	private int position = -1;
+	
+	public MockSearchResult(){}
 	
 	public MockSearchResult(boolean found, int position) {
 		this.found = found;
