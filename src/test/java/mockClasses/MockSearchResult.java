@@ -21,8 +21,4 @@ public class MockSearchResult implements SearchResult {
     public int getPosition() {
         return 0;
     }
-
-    public static MockSearchResult valueNotFound() {
-        return new MockSearchResult(NOT_FOUND);
-    }
 }
