@@ -83,4 +83,17 @@ public class SimilarityFinderTest {
 		assertThat(result, is(testValue));
 	}
 	
+	@Test
+	public void testHowManyTimesSearchMethodWasCalled() {
+		int seq1[] = {1,4,7};
+		int seq2[] = {7};
+		int testValue = Math.max(seq1.length, seq2.length);
+		
+		finder.calculateJackardSimilarity(seq1, seq2);
+		
+		int result = searcher.callCounter;
+		
+		assertThat(result, is(testValue));
+	}
+	
 }
