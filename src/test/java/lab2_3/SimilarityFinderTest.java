@@ -36,4 +36,15 @@ public class SimilarityFinderTest {
 		assertThat(result, is(equalTo(1.0)));
 	}
 
+	@Test
+	public void emptyArraysTest() {
+
+		int[] seq1 = {};
+		int[] seq2 = {};
+
+		double result = similarityFinder.calculateJackardSimilarity(seq1, seq2);
+
+		assertThat(result, is(equalTo(1.0)));
+	}
+
 }
