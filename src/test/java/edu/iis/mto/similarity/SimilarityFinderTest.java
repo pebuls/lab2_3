@@ -72,7 +72,12 @@ public class SimilarityFinderTest {
 	
 	@Test
 	public void testCalculateJackardSimilarityOfSequencesOfDifferentLengthWithNoEqualElements() {
-		fail("Not yet implemented");
+		
+		int[] seq1 = {1, 3, 5};
+		int[] seq2 = {7, 9, 11, 13};
+		double expectedResult = 0d;
+		
+		Assert.assertThat(finder.calculateJackardSimilarity(seq1, seq2), is(equalTo(expectedResult)));
 	}
 	
 	@Test
