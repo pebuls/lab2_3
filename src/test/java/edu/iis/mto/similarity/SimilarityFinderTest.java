@@ -56,11 +56,26 @@ public class SimilarityFinderTest {
 
     }
 
-    @Test public void calculateJackardSimilarity_PartiallySameSequences(){
+    @Test public void calculateJackardSimilarity_partiallySameSequences_sameLength(){
         int[] seq1 = {1,2,3,4};
         int[] seq2 = {2,3,4,5};
         double result = finder.calculateJackardSimilarity(seq1,seq2);
         assertThat(result,is(0.6));
+        Integer[] convertedSeq1 = convertIntArrayToIntegerArray(seq1);
+
+        for(MockSequenceSeeker.SearchMethodCall call : mockSequenceSeeker.calls){
+
+            assertThat(call.getSearchedKey(),isIn(convertedSeq1));
+            assertThat(call.getSearchedSequence(),isOneOf(seq1,seq2));
+
+        }
+    }
+
+    @Test public void calculateJackardSimilarity_partiallySameSequences_differentLength(){
+        int[] seq1 = {1,2,3,4};
+        int[] seq2 = {2,3,4,5,6};
+        double result = finder.calculateJackardSimilarity(seq1,seq2);
+        assertThat(result,is(0.5));
         Integer[] convertedSeq1 = convertIntArrayToIntegerArray(seq1);
 
         for(MockSequenceSeeker.SearchMethodCall call : mockSequenceSeeker.calls){
