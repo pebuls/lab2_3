@@ -14,13 +14,11 @@ public class MockSearchResult implements SearchResult {
 	}
 	
 	public boolean isFound() {
-		// TODO Auto-generated method stub
-		return false;
+		return found;
 	}
 
 	public int getPosition() {
-		// TODO Auto-generated method stub
-		return 0;
+		return position;
 	}
 
 }
