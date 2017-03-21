@@ -90,9 +90,15 @@ public class SimilarityFinderTest {
 		Assert.assertThat(finder.calculateJackardSimilarity(seq1, seq2), is(equalTo(expectedResult)));
 	}
 	
-	@Test
+	@Test(expected = NullPointerException.class)
 	public void testCalculateJackardSimilarityOfNullSequences() {
-		fail("Not yet implemented");
+		
+		int[] seq1 = null;
+		int[] seq2 = null;
+		int[] seq3 = {1, 3, 5, 13, 15, 17};
+		
+		finder.calculateJackardSimilarity(seq1, seq2);
+		finder.calculateJackardSimilarity(seq1, seq3);
 	}
 	
 	@Test
