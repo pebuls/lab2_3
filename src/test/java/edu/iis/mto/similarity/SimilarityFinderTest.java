@@ -102,7 +102,13 @@ public class SimilarityFinderTest {
 	}
 	
 	@Test
-	public void testCalculateJackardSimilarityInvocationsNumber() {
-		fail("Not yet implemented");
+	public void testSearchMethodInvocationsNumberInCalculateJackardSimilarity() {
+		
+		int[] seq1 = {1, 3, 5};
+		int[] seq2 = {1, 3, 5, 13, 15, 17};
+		int expectedNumber = 3;
+		
+		finder.calculateJackardSimilarity(seq1, seq2);
+		Assert.assertThat(mockSearcher.getInvocationsNumber(), is(equalTo(expectedNumber)));
 	}
 }
