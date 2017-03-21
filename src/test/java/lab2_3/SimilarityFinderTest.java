@@ -46,7 +46,7 @@ public class SimilarityFinderTest {
 
 		assertThat(result, is(equalTo(1.0)));
 	}
-	
+
 	@Test
 	public void oneSameArraysTest() {
 
@@ -67,5 +67,16 @@ public class SimilarityFinderTest {
 		double result = similarityFinder.calculateJackardSimilarity(seq1, seq2);
 
 		assertThat(result, is(equalTo(0.2)));
+	}
+
+	@Test
+	public void countTest() {
+
+		int[] seq1 = {1,2,3};
+		int[] seq2 = {3,4,5};
+
+		double result = similarityFinder.calculateJackardSimilarity(seq1, seq2);
+
+		assertThat(sequenceSearcher.getCount(), is(equalTo(3)));
 	}
 }
