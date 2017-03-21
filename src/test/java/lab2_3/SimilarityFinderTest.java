@@ -44,5 +44,15 @@ public class SimilarityFinderTest {
 		Assert.assertThat(result, is(0.25d));
 	}
 	
+	@Test
+	public void testCalculateJackardSimilarityWithoutTheSameElement() {
+		
+		int[] seq1 = { 1, 2};
+		int[] seq2 = { 3, 4, 5};
+		
+		double result = finder.calculateJackardSimilarity(seq1, seq2);
+		Assert.assertThat(result, is(0d));
+	}
+	
 	
 }
