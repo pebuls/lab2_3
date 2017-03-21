@@ -12,10 +12,12 @@ import static org.hamcrest.CoreMatchers.*;
 public class SimilarityFinderTest {
 
     private SimilarityFinder finder;
+    private MockSequenceSearcher searcher;
 
     @Before
     public void init() {
-        finder = new SimilarityFinder(new MockSequenceSearcher());
+        searcher = new MockSequenceSearcher();
+        finder = new SimilarityFinder(searcher);
     }
 
     @Test
@@ -23,8 +25,10 @@ public class SimilarityFinderTest {
         int[] seq1 = {};
         int[] seq2 = {};
         final double EXPECTED = 1.0;
+        final int EXPECTED_CALLS = 0;
 
         Assert.assertThat(finder.calculateJackardSimilarity(seq1, seq2), is(EXPECTED));
+        Assert.assertThat(searcher.getCall(), is(EXPECTED_CALLS));
     }
 
     @Test
@@ -32,9 +36,13 @@ public class SimilarityFinderTest {
         int[] seq1 = {1};
         int[] seq2 = {};
         final double EXPECTED = 0.0;
+        final int EXPECTED_CALLS_1 = 1;
+        final int EXPECTED_CALLS_2 = 0;
 
         Assert.assertThat(finder.calculateJackardSimilarity(seq1, seq2), is(EXPECTED));
+        Assert.assertThat(searcher.getCall(), is(EXPECTED_CALLS_1));
         Assert.assertThat(finder.calculateJackardSimilarity(seq2, seq1), is(EXPECTED));
+        Assert.assertThat(searcher.getCall(), is(EXPECTED_CALLS_2));
     }
 
     @Test
@@ -42,9 +50,13 @@ public class SimilarityFinderTest {
         int[] seq1 = {1};
         int[] seq2 = {1};
         final double EXPECTED = 1.0;
+        final int EXPECTED_CALLS_1 = 1;
+        final int EXPECTED_CALLS_2 = 1;
 
         Assert.assertThat(finder.calculateJackardSimilarity(seq1, seq2), is(EXPECTED));
+        Assert.assertThat(searcher.getCall(), is(EXPECTED_CALLS_1));
         Assert.assertThat(finder.calculateJackardSimilarity(seq2, seq1), is(EXPECTED));
+        Assert.assertThat(searcher.getCall(), is(EXPECTED_CALLS_2));
     }
 
     @Test
@@ -52,9 +64,13 @@ public class SimilarityFinderTest {
         int[] seq1 = {1};
         int[] seq2 = {2};
         final double EXPECTED = 0.0;
+        final int EXPECTED_CALLS_1 = 1;
+        final int EXPECTED_CALLS_2 = 1;
 
         Assert.assertThat(finder.calculateJackardSimilarity(seq1, seq2), is(EXPECTED));
+        Assert.assertThat(searcher.getCall(), is(EXPECTED_CALLS_1));
         Assert.assertThat(finder.calculateJackardSimilarity(seq2, seq1), is(EXPECTED));
+        Assert.assertThat(searcher.getCall(), is(EXPECTED_CALLS_2));
     }
 
     @Test
@@ -62,9 +78,13 @@ public class SimilarityFinderTest {
         int[] seq1 = {1, 2};
         int[] seq2 = {2, 1};
         final double EXPECTED = 1.0;
+        final int EXPECTED_CALLS_1 = 2;
+        final int EXPECTED_CALLS_2 = 2;
 
         Assert.assertThat(finder.calculateJackardSimilarity(seq1, seq2), is(EXPECTED));
+        Assert.assertThat(searcher.getCall(), is(EXPECTED_CALLS_1));
         Assert.assertThat(finder.calculateJackardSimilarity(seq2, seq1), is(EXPECTED));
+        Assert.assertThat(searcher.getCall(), is(EXPECTED_CALLS_2));
     }
 
     @Test
@@ -72,9 +92,13 @@ public class SimilarityFinderTest {
         int[] seq1 = {1, 3};
         int[] seq2 = {2, 1};
         final double EXPECTED = 1.0/3.0;
+        final int EXPECTED_CALLS_1 = 2;
+        final int EXPECTED_CALLS_2 = 2;
 
         Assert.assertThat(finder.calculateJackardSimilarity(seq1, seq2), is(EXPECTED));
+        Assert.assertThat(searcher.getCall(), is(EXPECTED_CALLS_1));
         Assert.assertThat(finder.calculateJackardSimilarity(seq2, seq1), is(EXPECTED));
+        Assert.assertThat(searcher.getCall(), is(EXPECTED_CALLS_2));
     }
 
     @Test
@@ -82,9 +106,13 @@ public class SimilarityFinderTest {
         int[] seq1 = {1, 2};
         int[] seq2 = {3, 4};
         final double EXPECTED = 0.0;
+        final int EXPECTED_CALLS_1 = 2;
+        final int EXPECTED_CALLS_2 = 2;
 
         Assert.assertThat(finder.calculateJackardSimilarity(seq1, seq2), is(EXPECTED));
+        Assert.assertThat(searcher.getCall(), is(EXPECTED_CALLS_1));
         Assert.assertThat(finder.calculateJackardSimilarity(seq2, seq1), is(EXPECTED));
+        Assert.assertThat(searcher.getCall(), is(EXPECTED_CALLS_2));
     }
 
     @Test
@@ -92,9 +120,13 @@ public class SimilarityFinderTest {
         int[] seq1 = {1, 2};
         int[] seq2 = {2, 1, 3};
         final double EXPECTED = 2.0/3.0;
+        final int EXPECTED_CALLS_1 = 2;
+        final int EXPECTED_CALLS_2 = 3;
 
         Assert.assertThat(finder.calculateJackardSimilarity(seq1, seq2), is(EXPECTED));
+        Assert.assertThat(searcher.getCall(), is(EXPECTED_CALLS_1));
         Assert.assertThat(finder.calculateJackardSimilarity(seq2, seq1), is(EXPECTED));
+        Assert.assertThat(searcher.getCall(), is(EXPECTED_CALLS_2));
     }
 
     @Test
@@ -102,9 +134,13 @@ public class SimilarityFinderTest {
         int[] seq1 = {1, 4};
         int[] seq2 = {2, 1, 3};
         final double EXPECTED = 1.0/4.0;
+        final int EXPECTED_CALLS_1 = 2;
+        final int EXPECTED_CALLS_2 = 3;
 
         Assert.assertThat(finder.calculateJackardSimilarity(seq1, seq2), is(EXPECTED));
+        Assert.assertThat(searcher.getCall(), is(EXPECTED_CALLS_1));
         Assert.assertThat(finder.calculateJackardSimilarity(seq2, seq1), is(EXPECTED));
+        Assert.assertThat(searcher.getCall(), is(EXPECTED_CALLS_2));
     }
 
     @Test
@@ -112,8 +148,12 @@ public class SimilarityFinderTest {
         int[] seq1 = {5, 4};
         int[] seq2 = {2, 1, 3};
         final double EXPECTED = 0.0;
+        final int EXPECTED_CALLS_1 = 2;
+        final int EXPECTED_CALLS_2 = 3;
 
         Assert.assertThat(finder.calculateJackardSimilarity(seq1, seq2), is(EXPECTED));
+        Assert.assertThat(searcher.getCall(), is(EXPECTED_CALLS_1));
         Assert.assertThat(finder.calculateJackardSimilarity(seq2, seq1), is(EXPECTED));
+        Assert.assertThat(searcher.getCall(), is(EXPECTED_CALLS_2));
     }
 }
