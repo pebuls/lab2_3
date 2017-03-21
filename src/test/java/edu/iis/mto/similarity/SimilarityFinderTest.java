@@ -45,4 +45,14 @@ public class SimilarityFinderTest {
 	public void testCalculateJackardSimilarityOfSequencesOfDifferentLengthWithSomeEqualElements() {
 		fail("Not yet implemented");
 	}
+	
+	@Test
+	public void testCalculateJackardSimilarityOfNullSequences() {
+		fail("Not yet implemented");
+	}
+	
+	@Test
+	public void testCalculateJackardSimilarityInvocationsNumber() {
+		fail("Not yet implemented");
+	}
 }
