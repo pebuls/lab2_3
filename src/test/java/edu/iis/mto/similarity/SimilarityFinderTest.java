@@ -1,5 +1,6 @@
 package edu.iis.mto.similarity;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -7,6 +8,7 @@ import static org.hamcrest.Matchers.emptyIterable;
 import static org.hamcrest.Matchers.isIn;
 import static org.hamcrest.Matchers.isOneOf;
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.*;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -36,7 +38,7 @@ public class SimilarityFinderTest {
         int[] seq2 = seq1;
         double result = finder.calculateJackardSimilarity(seq1,seq2);
         assertThat(result,is(1.0));
-
+        assertThat(mockSequenceSeeker.calls.size(),is(5));
         Integer[] convertedSeq1 = convertIntArrayToIntegerArray(seq1);
 
         for(MockSequenceSeeker.SearchMethodCall call : mockSequenceSeeker.calls){
@@ -61,6 +63,7 @@ public class SimilarityFinderTest {
         int[] seq2 = {2,3,4,5};
         double result = finder.calculateJackardSimilarity(seq1,seq2);
         assertThat(result,is(0.6));
+        assertThat(mockSequenceSeeker.calls.size(),is(4));
         Integer[] convertedSeq1 = convertIntArrayToIntegerArray(seq1);
 
         for(MockSequenceSeeker.SearchMethodCall call : mockSequenceSeeker.calls){
@@ -76,6 +79,7 @@ public class SimilarityFinderTest {
         int[] seq2 = {2,3,4,5,6};
         double result = finder.calculateJackardSimilarity(seq1,seq2);
         assertThat(result,is(0.5));
+        assertThat(mockSequenceSeeker.calls.size(),is(4));
         Integer[] convertedSeq1 = convertIntArrayToIntegerArray(seq1);
 
         for(MockSequenceSeeker.SearchMethodCall call : mockSequenceSeeker.calls){
@@ -84,5 +88,45 @@ public class SimilarityFinderTest {
             assertThat(call.getSearchedSequence(),isOneOf(seq1,seq2));
 
         }
+    }
+
+    @Test public void calculateJackardSimilarity_totallyDifferentSequences_sameLength(){
+        int[] seq1 = {1,2,3,4};
+        int[] seq2 = {5,6,7,8};
+        double result = finder.calculateJackardSimilarity(seq1,seq2);
+
+        assertThat(result,is(0.0));
+
+        Integer[] convertedSeq1 = convertIntArrayToIntegerArray(seq1);
+        assertThat(mockSequenceSeeker.calls.size(),is(4));
+
+        for(MockSequenceSeeker.SearchMethodCall call : mockSequenceSeeker.calls){
+
+            assertThat(call.getSearchedKey(),isIn(convertedSeq1));
+            assertThat(call.getSearchedSequence(),isOneOf(seq1,seq2));
+
+        }
+
+
+    }
+
+    @Test public void calculateJackardSimilarity_totallyDifferentSequences_differentLength(){
+        int[] seq1 = {1,2,3,4};
+        int[] seq2 = {5};
+        double result = finder.calculateJackardSimilarity(seq1,seq2);
+
+        assertThat(result,is(0.0));
+
+        Integer[] convertedSeq1 = convertIntArrayToIntegerArray(seq1);
+        assertThat(mockSequenceSeeker.calls.size(),is(4));
+
+        for(MockSequenceSeeker.SearchMethodCall call : mockSequenceSeeker.calls){
+
+            assertThat(call.getSearchedKey(),isIn(convertedSeq1));
+            assertThat(call.getSearchedSequence(),isOneOf(seq1,seq2));
+
+        }
+
+
     }
 }
