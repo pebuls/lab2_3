@@ -6,9 +6,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class SimilarityFinderTest {
-
+	
+	private MockSequenceSearcher mockSearcher;
+	private SimilarityFinder finder;
+	
 	@Before
 	public void setUp() throws Exception {
+		
+		mockSearcher = new MockSequenceSearcher();
+		finder = new SimilarityFinder(mockSearcher);
 	}
 
 	@Test
