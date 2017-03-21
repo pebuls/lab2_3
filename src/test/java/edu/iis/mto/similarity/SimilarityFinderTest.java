@@ -37,14 +37,14 @@ public class SimilarityFinderTest {
         int[] seq1 = {1,2,3,4,5};
         int[] seq2 = seq1;
         double result = finder.calculateJackardSimilarity(seq1,seq2);
-        assertThat(result,is(1.0));
-        assertThat(mockSequenceSeeker.calls.size(),is(5));
+        Assert.assertThat(result,is(1.0));
+        Assert.assertThat(mockSequenceSeeker.calls.size(),is(5));
         Integer[] convertedSeq1 = convertIntArrayToIntegerArray(seq1);
 
         for(MockSequenceSeeker.SearchMethodCall call : mockSequenceSeeker.calls){
 
-            assertThat(call.getSearchedKey(),isIn(convertedSeq1));
-            assertThat(call.getSearchedSequence(),isOneOf(seq1,seq2));
+            Assert.assertThat(call.getSearchedKey(),isIn(convertedSeq1));
+            Assert.assertThat(call.getSearchedSequence(),isOneOf(seq1,seq2));
 
         }
     }
@@ -53,8 +53,8 @@ public class SimilarityFinderTest {
         int[] seq1 = {};
         int[] seq2 = seq1;
         double result = finder.calculateJackardSimilarity(seq1,seq2);
-        assertThat(result,is(1.0));
-        assertThat(mockSequenceSeeker.calls, emptyIterable());
+        Assert.assertThat(result,is(1.0));
+        Assert.assertThat(mockSequenceSeeker.calls, emptyIterable());
 
     }
 
@@ -62,14 +62,14 @@ public class SimilarityFinderTest {
         int[] seq1 = {1,2,3,4};
         int[] seq2 = {2,3,4,5};
         double result = finder.calculateJackardSimilarity(seq1,seq2);
-        assertThat(result,is(0.6));
-        assertThat(mockSequenceSeeker.calls.size(),is(4));
+        Assert.assertThat(result,is(0.6));
+        Assert.assertThat(mockSequenceSeeker.calls.size(),is(4));
         Integer[] convertedSeq1 = convertIntArrayToIntegerArray(seq1);
 
         for(MockSequenceSeeker.SearchMethodCall call : mockSequenceSeeker.calls){
 
-            assertThat(call.getSearchedKey(),isIn(convertedSeq1));
-            assertThat(call.getSearchedSequence(),isOneOf(seq1,seq2));
+            Assert.assertThat(call.getSearchedKey(),isIn(convertedSeq1));
+            Assert.assertThat(call.getSearchedSequence(),isOneOf(seq1,seq2));
 
         }
     }
@@ -78,14 +78,14 @@ public class SimilarityFinderTest {
         int[] seq1 = {1,2,3,4};
         int[] seq2 = {2,3,4,5,6};
         double result = finder.calculateJackardSimilarity(seq1,seq2);
-        assertThat(result,is(0.5));
-        assertThat(mockSequenceSeeker.calls.size(),is(4));
+        Assert.assertThat(result,is(0.5));
+        Assert.assertThat(mockSequenceSeeker.calls.size(),is(4));
         Integer[] convertedSeq1 = convertIntArrayToIntegerArray(seq1);
 
         for(MockSequenceSeeker.SearchMethodCall call : mockSequenceSeeker.calls){
 
-            assertThat(call.getSearchedKey(),isIn(convertedSeq1));
-            assertThat(call.getSearchedSequence(),isOneOf(seq1,seq2));
+            Assert.assertThat(call.getSearchedKey(),isIn(convertedSeq1));
+            Assert.assertThat(call.getSearchedSequence(),isOneOf(seq1,seq2));
 
         }
     }
@@ -95,15 +95,15 @@ public class SimilarityFinderTest {
         int[] seq2 = {5,6,7,8};
         double result = finder.calculateJackardSimilarity(seq1,seq2);
 
-        assertThat(result,is(0.0));
+        Assert.assertThat(result,is(0.0));
 
         Integer[] convertedSeq1 = convertIntArrayToIntegerArray(seq1);
-        assertThat(mockSequenceSeeker.calls.size(),is(4));
+        Assert.assertThat(mockSequenceSeeker.calls.size(),is(4));
 
         for(MockSequenceSeeker.SearchMethodCall call : mockSequenceSeeker.calls){
 
-            assertThat(call.getSearchedKey(),isIn(convertedSeq1));
-            assertThat(call.getSearchedSequence(),isOneOf(seq1,seq2));
+            Assert.assertThat(call.getSearchedKey(),isIn(convertedSeq1));
+            Assert.assertThat(call.getSearchedSequence(),isOneOf(seq1,seq2));
 
         }
 
@@ -115,18 +115,16 @@ public class SimilarityFinderTest {
         int[] seq2 = {5};
         double result = finder.calculateJackardSimilarity(seq1,seq2);
 
-        assertThat(result,is(0.0));
+        Assert.assertThat(result,is(0.0));
 
         Integer[] convertedSeq1 = convertIntArrayToIntegerArray(seq1);
-        assertThat(mockSequenceSeeker.calls.size(),is(4));
+        Assert.assertThat(mockSequenceSeeker.calls.size(),is(4));
 
         for(MockSequenceSeeker.SearchMethodCall call : mockSequenceSeeker.calls){
 
-            assertThat(call.getSearchedKey(),isIn(convertedSeq1));
-            assertThat(call.getSearchedSequence(),isOneOf(seq1,seq2));
+            Assert.assertThat(call.getSearchedKey(),isIn(convertedSeq1));
+            Assert.assertThat(call.getSearchedSequence(),isOneOf(seq1,seq2));
 
         }
-
-
     }
 }
