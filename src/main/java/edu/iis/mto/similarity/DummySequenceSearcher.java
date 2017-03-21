@@ -14,10 +14,13 @@ import edu.iis.mto.search.SequenceSearcher;
  */
 public class DummySequenceSearcher implements SequenceSearcher {
 
+    private int invocationCounter = 0;
+    
     public SearchResult search(int i, int[] ints) {
+        
         if(ints == null || ints.length == 0)
             throw new IllegalArgumentException("Empty sequence");
-        
+        invocationCounter++;
         int lo = 0;
         int hi = ints.length - 1;
         while (lo <= hi) {
@@ -26,8 +29,15 @@ public class DummySequenceSearcher implements SequenceSearcher {
             else if (i > ints[mid]) lo = mid + 1;
             else return new DummySearchResult(mid, true);
         }
+        
         return new DummySearchResult(-1, false);
     
     }
+
+    public int getInvocationCounter() {
+        return invocationCounter;
+    }
+    
+    
     
 }
