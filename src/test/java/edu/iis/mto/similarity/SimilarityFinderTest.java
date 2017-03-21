@@ -1,7 +1,10 @@
 package edu.iis.mto.similarity;
 
 import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
 
+
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,7 +22,12 @@ public class SimilarityFinderTest {
 
 	@Test
 	public void testCalculateJackardSimilarityOfEmptySequences() {
-		fail("Not yet implemented");
+
+		int[] seq1 = {};
+		int[] seq2 = {};
+		double expectedResult = 1.0d;
+		
+		Assert.assertThat(finder.calculateJackardSimilarity(seq1, seq2), is(equalTo(expectedResult)));
 	}
 	
 	@Test
