@@ -7,6 +7,11 @@ package edu.iis.mto.similarity;
 
 import edu.iis.mto.search.SearchResult;
 import edu.iis.mto.search.SequenceSearcher;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  *
@@ -21,15 +26,10 @@ public class DummySequenceSearcher implements SequenceSearcher {
         if(ints == null || ints.length == 0)
             throw new IllegalArgumentException("Empty sequence");
         invocationCounter++;
-        int lo = 0;
-        int hi = ints.length - 1;
-        while (lo <= hi) {
-            int mid = lo + (hi - lo) / 2;
-            if      (i < ints[mid]) hi = mid - 1;
-            else if (i > ints[mid]) lo = mid + 1;
-            else return new DummySearchResult(mid, true);
-        }
-        
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        list.addAll(IntStream.of(ints).boxed().collect(Collectors.toList()));
+        if(list.contains(i))
+            return new DummySearchResult(list.indexOf(i), true);
         return new DummySearchResult(-1, false);
     
     }
