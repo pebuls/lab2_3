@@ -79,4 +79,17 @@ public class SimilarityFinderTest {
 
 		assertThat(sequenceSearcher.getCount(), is(equalTo(3)));
 	}
+
+	@Test
+	public void correctParamsTest() {
+
+		int[] seq1 = {1,2,3};
+		int[] seq2 = {3,4,5};
+
+		double result = similarityFinder.calculateJackardSimilarity(seq1, seq2);
+
+		 for(int[] ints : sequenceSearcher.getList()){
+			 assertThat(ints, equalTo(seq2));
+		 }
+	}
 }
