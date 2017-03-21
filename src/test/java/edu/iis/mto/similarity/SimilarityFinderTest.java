@@ -12,8 +12,37 @@ public class SimilarityFinderTest {
 	}
 
 	@Test
-	public void test() {
+	public void testCalculateJackardSimilarityOfEmptySequences() {
 		fail("Not yet implemented");
 	}
-
+	
+	@Test
+	public void testCalculateJackardSimilarityOfEqualSequences() {
+		fail("Not yet implemented");
+	}
+	
+	@Test
+	public void testCalculateJackardSimilarityOfEmptySequenceAndNonEmptySequence() {
+		fail("Not yet implemented");
+	}
+	
+	@Test
+	public void testCalculateJackardSimilarityOfSequencesOfTheSameLengthWithNoEqualElements() {
+		fail("Not yet implemented");
+	}
+	
+	@Test
+	public void testCalculateJackardSimilarityOfSequencesOfTheSameLengthWithSomeEqualElements() {
+		fail("Not yet implemented");
+	}
+	
+	@Test
+	public void testCalculateJackardSimilarityOfSequencesOfDifferentLengthWithNoEqualElements() {
+		fail("Not yet implemented");
+	}
+	
+	@Test
+	public void testCalculateJackardSimilarityOfSequencesOfDifferentLengthWithSomeEqualElements() {
+		fail("Not yet implemented");
+	}
 }
