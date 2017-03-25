@@ -7,12 +7,11 @@ public class MockSearchResult implements SearchResult{
 	private boolean found;
     private int position;
     
-	public boolean isFound() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	public int getPosition() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    public boolean isFound() {
+        return this.found;
+    }
+    
+    public int getPosition() {
+        return this.position;
+   }
 }
