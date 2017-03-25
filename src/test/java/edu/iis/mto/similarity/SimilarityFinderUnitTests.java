@@ -3,7 +3,6 @@ package edu.iis.mto.similarity;
 
 import static org.junit.Assert.*;
 
-import org.hamcrest.generator.qdox.Searcher;
 
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.CoreMatchers.*;
@@ -16,9 +15,14 @@ public class SimilarityFinderUnitTests {
 	private SimilarityFinder similarityFinder;
     private Searcher searcher;
     
+    @Before
+    public void setUp() throws Exception {
+        searcher = new Searcher();
+        similarityFinder = new SimilarityFinder(searcher);
+    }
     
     @Test
-    public void test_emptyArrays() throws Exception {
+    public void testEmptyArrays() throws Exception {
         int[] tab1 = new int[0];
         int[] tab2 = new int[0];
 
