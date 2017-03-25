@@ -16,9 +16,6 @@ public class SimilarityFinderUnitTests {
 	private SimilarityFinder similarityFinder;
     private Searcher searcher;
     
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
+
 
 }
