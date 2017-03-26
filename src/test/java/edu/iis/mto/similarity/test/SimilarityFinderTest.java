@@ -24,4 +24,15 @@ public class SimilarityFinderTest {
  
  		assertThat(result, is(equalTo(0.0)));
  	}
+ 	
+ 	@Test
+ 	public void sameArraysTest() {
+ 
+ 		int[] seq1 = {1,2,3};
+ 		int[] seq2 = {1,2,3};
+ 
+ 		double result = similarityFinder.calculateJackardSimilarity(seq1, seq2);
+ 
+ 		assertThat(result, is(equalTo(1.0)));
+ 	}
 }
