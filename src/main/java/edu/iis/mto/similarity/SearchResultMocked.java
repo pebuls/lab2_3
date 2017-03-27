@@ -20,6 +20,4 @@ public class SearchResultMocked implements SearchResult{
 	public int getPosition() {
 		return position;
 	}
-	
-
 }
