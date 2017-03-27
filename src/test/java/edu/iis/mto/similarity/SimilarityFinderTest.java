@@ -33,7 +33,7 @@ public class SimilarityFinderTest {
 		Assert.assertThat(similarityFinder.calculateJackardSimilarity(seq1, seq2), is(equalTo(0.0)));
 	}
 	
-	@Test(expected = IllegalStateException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void secondEmptySequenceTest() {
 		int[] seq1 = {1, 2, 3, 4, 5};
 		int[] seq2 = {};

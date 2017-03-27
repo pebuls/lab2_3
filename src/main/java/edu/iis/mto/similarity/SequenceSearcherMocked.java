@@ -12,7 +12,7 @@ public class SequenceSearcherMocked implements SequenceSearcher{
 		counter+=1;
 		
 		if(seq.length == 0) {
-			throw new IllegalStateException();
+			throw new IllegalArgumentException();
 		}
 		for(int i=0; i<seq.length; i++) {
 			if (seq[i] == key) {
