@@ -18,13 +18,19 @@ public class SimilarityFinderTest {
 	}
 	
 	@Test
-	public void emptySequences() {
+	public void emptySequencesTest() {
 		int[] seq1 = {};
 		int[] seq2 = {};
 		
 		Assert.assertThat(similarityFinder.calculateJackardSimilarity(seq1, seq2), is(equalTo(1.0)));
+	}
+	
+	@Test
+	public void firstEmptySequenceTest() {
+		int[] seq1 = {};
+		int[] seq2 = {1, 2, 3, 4, 5};
 		
-		
+		Assert.assertThat(similarityFinder.calculateJackardSimilarity(seq1, seq2), is(equalTo(0.0)));
 	}
 	
 	
