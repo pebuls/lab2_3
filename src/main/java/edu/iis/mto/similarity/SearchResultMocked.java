@@ -4,8 +4,8 @@ import edu.iis.mto.search.SearchResult;
 
 public class SearchResultMocked implements SearchResult{
 	
-	int position;
-	boolean isFound;
+	private int position;
+	private boolean isFound;
 	
 	public SearchResultMocked(int position, boolean isFound) {
 		super();
