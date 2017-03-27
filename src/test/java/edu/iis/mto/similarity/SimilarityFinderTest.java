@@ -48,6 +48,15 @@ public class SimilarityFinderTest {
 		Assert.assertThat(sequenceSearcher.getCounter(), is(equalTo(5)));
 	}
 	
+	public void sameSequencesTest() {
+		int[] seq1 = {1, 2, 3, 4, 5};
+		int[] seq2 = {1, 2, 3, 4, 5};
+		Assert.assertThat(similarityFinder.calculateJackardSimilarity(seq1, seq2), is(equalTo(5.0)));
+		Assert.assertThat(sequenceSearcher.getCounter(), is(equalTo(5)));
+	}
+	
+	
+	
 	
 
 }
