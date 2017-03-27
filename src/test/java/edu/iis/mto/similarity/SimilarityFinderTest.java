@@ -58,11 +58,20 @@ public class SimilarityFinderTest {
 	}
 	
 	@Test
-	public void differentLengthSequencesTest() {
+	public void secondSequenceIsShorterTest() {
 		int[] seq1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 		int[] seq2 = {3};
 		Assert.assertThat(similarityFinder.calculateJackardSimilarity(seq1, seq2), is(equalTo(0.1)));
 		Assert.assertThat(sequenceSearcher.getCounter(), is(equalTo(10)));
+	}
+	
+	
+	@Test
+	public void firstSequenceIsShorterTest() {
+		int[] seq1 = {3};
+		int[] seq2 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+		Assert.assertThat(similarityFinder.calculateJackardSimilarity(seq1, seq2), is(equalTo(0.1)));
+		Assert.assertThat(sequenceSearcher.getCounter(), is(equalTo(1)));
 	}
 	
 	
