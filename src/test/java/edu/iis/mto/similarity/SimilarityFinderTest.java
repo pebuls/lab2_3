@@ -91,4 +91,15 @@ public class SimilarityFinderTest {
 		
 		assertThat(result, is(equalTo(expectedResult)));
 	}
+	
+	@Test
+	public void numberOfSearchCalls() {
+		int[] seq1 = {10, 20, 30, 40, 50};
+		int[] seq2 = {10, 20, 60};
+		
+		similarityFinder.calculateJackardSimilarity(seq1, seq2);
+		int result = seq1.length;
+		
+		assertThat(result, is(equalTo(mockSequenceSearcher.callCounter)));
+	}
 }
