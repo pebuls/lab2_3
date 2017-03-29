@@ -32,5 +32,16 @@ public class SimilarityFinderTest {
 		assertThat(result, is(equalTo(expectedResult)));
 	}
 	
+	@Test
+	public void twoDifferentArrays() {
+		int[] seq1 = {10, 20, 30, 40, 50};
+		int[] seq2 = {60, 70, 80, 90, 100};
+		
+		double result = similarityFinder.calculateJackardSimilarity(seq1, seq2);
+		double expectedResult = 0.0;
+		
+		assertThat(result, is(equalTo(expectedResult)));
+	}
+	
 	
 }
