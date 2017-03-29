@@ -1,5 +1,11 @@
 package edu.iis.mto.similarity;
 
-public class TestSimilarityFinder {
+import static org.junit.Assert.*;
+import edu.iis.mto.search.*;
 
+public class SimilarityFinderTest {
+	MockSearchResult mockSearchResult = new MockSearchResult();
+	MockSequenceSearcher mockSequenceSearcher = new MockSequenceSearcher();
+	
+	
 }
