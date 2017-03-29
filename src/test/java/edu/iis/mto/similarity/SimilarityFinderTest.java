@@ -62,4 +62,11 @@ public class SimilarityFinderTest {
 		similarityFinder.calculateJackardSimilarity(seq1, seq2);
 	}
 	
+	@Test(expected = NullPointerException.class)
+	public void nullArray() {
+		int[] seq1 = {10, 20, 30};
+		int[] seq2 = null;
+		
+		similarityFinder.calculateJackardSimilarity(seq1, seq2);
+	}
 }
