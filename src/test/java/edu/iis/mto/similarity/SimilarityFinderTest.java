@@ -19,7 +19,6 @@ public class SimilarityFinderTest {
 		double expectedResult = 1.0;
 		
 		assertThat(result, is(equalTo(expectedResult)));
-		System.out.println(mockSequenceSearcher.callCounter);
 	}
 	
 	@Test
@@ -53,7 +52,6 @@ public class SimilarityFinderTest {
 		double expectedResult = (double) 4/6;
 		
 		assertThat(result, is(equalTo(expectedResult)));
-		System.out.println(mockSequenceSearcher.callCounter);
 	}
 	
 	@Test(expected = NullPointerException.class)
@@ -70,7 +68,6 @@ public class SimilarityFinderTest {
 		int[] seq2 = null;
 		
 		similarityFinder.calculateJackardSimilarity(seq1, seq2);
-		System.out.println(mockSequenceSearcher.callCounter);
 	}
 	
 	@Test
@@ -82,7 +79,6 @@ public class SimilarityFinderTest {
 		double expectedResult = 1.0;
 		
 		assertThat(result, is(equalTo(expectedResult)));
-		System.out.println(mockSequenceSearcher.callCounter);
 	}
 	
 	@Test
@@ -94,7 +90,6 @@ public class SimilarityFinderTest {
 		double expectedResult = (double) 2/6;
 		
 		assertThat(result, is(equalTo(expectedResult)));
-		System.out.println(mockSequenceSearcher.callCounter);
 	}
 	
 	@Test
@@ -106,7 +101,6 @@ public class SimilarityFinderTest {
 		int result = seq1.length;
 		
 		assertThat(result, is(equalTo(mockSequenceSearcher.callCounter)));
-		System.out.println(mockSequenceSearcher.callCounter);
 	}
 	
 	@Test
@@ -117,6 +111,15 @@ public class SimilarityFinderTest {
 		similarityFinder.calculateJackardSimilarity(seq1, seq2);
 		
 		assertThat(seq2, is(equalTo(mockSequenceSearcher.sequence)));
-		System.out.println(mockSequenceSearcher.callCounter);
+	}
+	
+	@Test
+	public void passedKey() {
+		int[] seq1 = {10, 20, 30, 40, 50};
+		int[] seq2 = {10, 20, 60};
+		
+		similarityFinder.calculateJackardSimilarity(seq1, seq2);
+		
+		assertThat(seq1[seq1.length-1], is(equalTo(mockSequenceSearcher.key)));
 	}
 }
