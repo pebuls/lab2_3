@@ -69,4 +69,15 @@ public class SimilarityFinderTest {
 		
 		similarityFinder.calculateJackardSimilarity(seq1, seq2);
 	}
+	
+	@Test
+	public void twoSameArraysButShuffled() {
+		int[] seq1 = {10, 20, 30, 40, 50};
+		int[] seq2 = {30, 50, 40, 10, 20};
+		
+		double result = similarityFinder.calculateJackardSimilarity(seq1, seq2);
+		double expectedResult = 1.0;
+		
+		assertThat(result, is(equalTo(expectedResult)));
+	}
 }
