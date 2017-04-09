@@ -47,4 +47,17 @@ public class TSimilarityFinder {
 
 		Assert.assertThat(result, Matchers.is(Matchers.equalTo(0.75)));
 	}
+	
+	@Test
+	public void similarityReturnsZeroWhenSeqsAreSameLengthButHaveDifferentElements() {
+		int[] seq1 = new int[] {1, 2, 3};
+		int[] seq2 = new int[] {4, 5, 6};
+
+		SequenceSearcher sequenceFinder = new DummySequenceSearcher();
+		SimilarityFinder similarityFinder = new SimilarityFinder(sequenceFinder);
+
+		double result = similarityFinder.calculateJackardSimilarity(seq1, seq2);
+
+		Assert.assertThat(result, Matchers.is(Matchers.equalTo(0.00)));
+	}
 }
