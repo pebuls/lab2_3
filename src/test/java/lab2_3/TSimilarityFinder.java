@@ -4,6 +4,8 @@ import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
 
+import edu.iis.mto.search.SequenceSearcher;
+import edu.iis.mto.similarity.DummySequenceSearcher;
 import edu.iis.mto.similarity.SimilarityFinder;
 
 public class TSimilarityFinder {
@@ -20,4 +22,16 @@ public class TSimilarityFinder {
 		Assert.assertThat(result, Matchers.is(Matchers.equalTo(1.0)));
 	}
 
+	@Test
+	public void similarityReturnsOneWhenSeqsAreTheSame() {
+		int[] seq1 = new int[] {1, 2, 3};
+		int[] seq2 = new int[] {1, 2, 3};
+
+		SequenceSearcher sequenceFinder = new DummySequenceSearcher();
+		SimilarityFinder similarityFinder = new SimilarityFinder(sequenceFinder);
+
+		double result = similarityFinder.calculateJackardSimilarity(seq1, seq2);
+
+		Assert.assertThat(result, Matchers.is(Matchers.equalTo(1.0)));
+	}
 }
