@@ -1,6 +1,10 @@
 package edu.iis.mto.similarity;
 
 import org.junit.Before;
+import org.junit.Test;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 
 public class SimilarityFinderTest {
@@ -11,6 +15,13 @@ public class SimilarityFinderTest {
     public void setUp() throws Exception {
         mockSequenceSearcher = new MockSequenceSearcher();
         similarityFinder = new SimilarityFinder(mockSequenceSearcher);
+    }
+
+    @Test
+    public void testCalculateWithEmptySize() throws Exception {
+        int[] array1 = new int[]{};
+        int[] array2 = new int[]{};
+        assertThat(similarityFinder.calculateJackardSimilarity(array1, array2), is(1.0d));
     }
 
 }
