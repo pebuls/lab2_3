@@ -10,13 +10,11 @@ import static org.junit.Assert.assertThat;
 public class SimilarityFinderTest {
     private SimilarityFinder similarityFinder;
     private MockSequenceSearcher mockSequenceSearcher;
-
     @Before
     public void setUp() throws Exception {
         mockSequenceSearcher = new MockSequenceSearcher();
         similarityFinder = new SimilarityFinder(mockSequenceSearcher);
     }
-
     @Test
     public void testCalculateWithEmptySize() throws Exception {
         int[] array1 = new int[]{};
@@ -42,5 +40,4 @@ public class SimilarityFinderTest {
         similarityFinder.calculateJackardSimilarity(array1, array2);
         assertThat(mockSequenceSearcher.count, is(3));
     }
-
 }
