@@ -35,5 +35,12 @@ public class SimilarityFinderTest {
         int[] array2 = new int[] {1,3,6};
         assertThat(similarityFinder.calculateJackardSimilarity(array1, array2), is(1.0d));
     }
+    @Test
+    public void testCount() throws Exception {
+        int[] array1 = new int[]{1, 8, 9};
+        int[] array2 = new int[]{3, 4, 6};
+        similarityFinder.calculateJackardSimilarity(array1, array2);
+        assertThat(mockSequenceSearcher.count, is(3));
+    }
 
 }
