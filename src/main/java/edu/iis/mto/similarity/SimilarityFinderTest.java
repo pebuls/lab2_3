@@ -69,4 +69,16 @@ public class SimilarityFinderTest {
             assertThat(call.sequence, is(intB));
         }
     }
+
+    @Test
+    public void jackardSimilarityWithAlmostSimilarArraysButDifferentLength() throws Exception {
+        int[] intA = new int[]{1, 18, 69, 123};
+        int[] intB = new int[]{69};
+        double actual = finder.calculateJackardSimilarity(intA, intB);
+        assertThat(actual, is(0.25d));
+        for(MockSequenceSearcher.Call call : mockSequenceSearcher.calls) {
+            assertThat(call.param, isIn(intsToArray(intA)));
+            assertThat(call.sequence, is(intB));
+        }
+    }
 }
