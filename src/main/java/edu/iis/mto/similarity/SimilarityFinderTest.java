@@ -44,5 +44,17 @@ public class SimilarityFinderTest {
             assertThat(call.sequence, isOneOf(intA, intB));
         }
     }
+
+
+    @Test
+    public void jackardSimilarityWithDifferentArrays() throws Exception {
+        int[] intA = new int[]{2, 7, -5, 13, 69, 16};
+        int[] intB = new int[]{0, -23, 11, 13, 123};
+        double actual = finder.calculateJackardSimilarity(intA, intB);
+        assertThat(actual, is(0.0d));
+        for(MockSequenceSearcher.Call call : mockSequenceSearcher.calls) {
+            assertThat(call.param, isIn(intsToArray(intA)));
+            assertThat(call.sequence, isOneOf(intB));
+        }
 }
 }
