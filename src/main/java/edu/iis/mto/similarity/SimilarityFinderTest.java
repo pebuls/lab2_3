@@ -3,9 +3,8 @@ package edu.iis.mto.similarity;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.emptyIterable;
 
 public class SimilarityFinderTest {
 
@@ -20,10 +19,30 @@ public class SimilarityFinderTest {
 
     @Test
     public void jackardSimilarityWithEmptyArrays() throws Exception {
-
         double actual = finder.calculateJackardSimilarity(new int[0], new int[0]);
-
         assertThat(actual, is(1.d));
         assertThat(mockSequenceSearcher.calls, emptyIterable());
     }
+
+    private static Integer[] intsToArray(int[] array) {
+        Integer[] result = new Integer[array.length];
+        for (int i = 0; i < array.length; i++) {
+            result[i] = array[i];
+        }
+        return result;
+    }
+
+    @Test
+    public void jackardSimilarityWithSameArrays() throws Exception {
+        final int[] intA = new int[]{1, 5, -3, 12, 69, 8};
+        int[] intB = new int[intA.length];
+        System.arraycopy(intA, 0, intB, 0, intA.length);
+        double actual = finder.calculateJackardSimilarity(intA, intB);
+        assertThat(actual, is(1.0d));
+        for(MockSequenceSearcher.Call call : mockSequenceSearcher.calls) {
+            assertThat(call.param, isIn(intsToArray(intA)));
+            assertThat(call.sequence, isOneOf(intA, intB));
+        }
+    }
+}
 }
