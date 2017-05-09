@@ -26,6 +26,8 @@ public class SimilarityFinderTest {
 		final double expected = 1.0d;
 		double result = similarityFinder.calculateJackardSimilarity(seq1, seq2);
 		assertThat(result, is(expected));
+		final int expectedCalls = 0;
+		assertThat(fakeSequenceSearcher.getCall(), is(expectedCalls));
 	}
 
 	@Test
@@ -35,6 +37,8 @@ public class SimilarityFinderTest {
 		final double expected = 1.0d;
 		double result = similarityFinder.calculateJackardSimilarity(seq1, seq2);
 		assertThat(result, is(expected));
+		final int expectedCalls = 0;
+		assertThat(fakeSequenceSearcher.getCall(), is(expectedCalls));
 	}
 
 	@Test
@@ -44,6 +48,8 @@ public class SimilarityFinderTest {
 		final double expected = 0.0d;
 		double result = similarityFinder.calculateJackardSimilarity(seq1, seq2);
 		assertThat(result, is(expected));
+		final int expectedCalls = 0;
+		assertThat(fakeSequenceSearcher.getCall(), is(expectedCalls));
 	}
 
 	@Test
@@ -53,6 +59,8 @@ public class SimilarityFinderTest {
 		final double expected = 0.0d;
 		double result = similarityFinder.calculateJackardSimilarity(seq1, seq2);
 		assertThat(result, is(expected));
+		final int expectedCalls = 0;
+		assertThat(fakeSequenceSearcher.getCall(), is(expectedCalls));
 	}
 
 	@Test
@@ -62,6 +70,8 @@ public class SimilarityFinderTest {
 		final double expected = 1.0 / 3.0d;
 		double result = similarityFinder.calculateJackardSimilarity(seq1, seq2);
 		assertThat(result, is(expected));
+		final int expectedCalls = 0;
+		assertThat(fakeSequenceSearcher.getCall(), is(expectedCalls));
 	}
 
 	@Test
@@ -71,6 +81,8 @@ public class SimilarityFinderTest {
 		final double expected = 3.0 / 4.0d;
 		double result = similarityFinder.calculateJackardSimilarity(seq1, seq2);
 		assertThat(result, is(expected));
+		final int expectedCalls = 0;
+		assertThat(fakeSequenceSearcher.getCall(), is(expectedCalls));
 	}
 
 }
