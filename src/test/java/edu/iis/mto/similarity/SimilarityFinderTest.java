@@ -55,4 +55,12 @@ public class SimilarityFinderTest {
 		assertThat(result, is(expected));
 	}
 
+	@Test
+	public void calculateJackardSimilarityForNotEqualSequences() throws Exception {
+		int[] seq1 = { 1, 3 };
+		int[] seq2 = { 2, 1 };
+		final double expected = 1.0 / 3.0d;
+		double result = similarityFinder.calculateJackardSimilarity(seq1, seq2);
+		assertThat(result, is(expected));
+	}
 }
